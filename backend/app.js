@@ -2,11 +2,13 @@ const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
 const bodyParse = require("body-parser")
+const cookiesParser = require("cookie-parser")
 require('dotenv').config();
 const morgan = require("morgan")
 
 app.use((morgan("dev")))
 app.use(bodyParse.json())
+app.use(cookiesParser())
 //connect to database
 mongoose.connect("mongodb+srv://bassel:basseltestapp@test.nhj585q.mongodb.net/?retryWrites=true&w=majority")
 .then(()=>console.log("sucess to connect to mongodb"))
