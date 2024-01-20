@@ -5,6 +5,8 @@ const bodyParse = require("body-parser")
 const cookiesParser = require("cookie-parser")
 require('dotenv').config();
 const morgan = require("morgan")
+const cors = require("cors")
+
 
 app.use((morgan("dev")))
 app.use(bodyParse.json())
