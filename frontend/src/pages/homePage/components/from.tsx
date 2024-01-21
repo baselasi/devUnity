@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SginIn from "./sginIn";
 import SginUp from "./sginUp";
 import { ChildProps } from "../../../utility/comonInterfaces";
+
 interface ThisInterface extends ChildProps {
     type:boolean| null
 }

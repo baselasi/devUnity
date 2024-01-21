@@ -7,12 +7,24 @@ const { restart } = require("nodemon")
 
 
 const userShema = new mongoose.Schema({
-    name :{
+    firstName :{
         type:String,
         trim : true,
-        required:[true,"please add a name"],
-        maxLength:32
+        maxLength:32,
+        required:[true ,"please add a first name"],
         // unique:true
+    },
+    lastName : {
+        type:String,
+        trim : true,
+        maxLength:32
+    },
+    username:{
+        type:String,
+        trim : true,
+        required:[true ,"please add a username"],
+        maxLength:32,
+        unique:true
     },
     email:{
         type:String,

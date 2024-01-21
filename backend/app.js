@@ -18,8 +18,8 @@ mongoose.connect("mongodb+srv://bassel:basseltestapp@test.nhj585q.mongodb.net/?r
 
 const userRouter = require("./routes/user") 
 
-const port = 3000
-
+const port = 4000
+app.use(cors())
 app.use("/api",userRouter)
 
 app.listen(port, () => {

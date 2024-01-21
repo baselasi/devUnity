@@ -6,23 +6,25 @@ require('dotenv').config();
 
 
 exports.checkUser = async (req,res,next)=>{
-    const {email} = req.body.data
+    const {email} = req.body
     const userExist = await User.findOne({email}) //check if email already exist
     if(userExist){
         return res.status(400).json({
             sucess:false,
             message:"email already exist"
-        })
+        })  
     }
     try{
         const mangerCount = await User.countDocuments({role:"1"})
-        console.log(mangerCount)
+        console.log(req.body.invitationCode)
         const teamMeamberCount = await User.countDocuments({role:"3"})
-        if(req.body.invatationCode == process.env.PROJECT_MANGER_CODE && mangerCount==0){ //cheack if code is a amnger code and there is users with manger code in db
-            req.body.data.role="1"  //passing role value in the req for the next middleware 
+        if(req.body.invitationCode == process.env.PROJECT_MANGER_CODE && mangerCount==0){ //cheack if code is a amnger code and there is users with manger code in db
+        console.log(req.body)
+            
+            req.body.role="1"  //passing role value in the req for the next middleware 
             next()  
-        }else if(req.body.invatationCode == process.env.TEAM_MEMBER_CODE && teamMeamberCount<6){//same but for team memebr
-            req.body.data.role="3"
+        }else if(req.body.invitationCode == process.env.TEAM_MEMBER_CODE && teamMeamberCount<6){//same but for team memebr
+            req.body.role="3"
             next()
         }else{
             return res.status(400).json({
@@ -40,7 +42,7 @@ exports.checkUser = async (req,res,next)=>{
 
 
 exports.signUp = async (req, res, next) => {
-    const { email } = req.body.data
+    const { email } = req.body
     const userExist = await User.findOne({ email })
     if (userExist) {
         return res.status(400).json({
@@ -49,8 +51,8 @@ exports.signUp = async (req, res, next) => {
         })
     }
     try {
-        let user = await User.create(req.body.data)
-        user.role=req.body.data.role
+        let user = await User.create(req.body)
+        user.role=req.body.role
         const id = user._id
         user = await user.save()   //make sure the the updatede made on the default falue stay the same
         res.status(200).json({
@@ -94,10 +96,10 @@ exports.singIn = async function (req, res) {
             })
         }
 
-        // const token = user.generateToken()
+        const token = user.generateToken()
         return res.status(200).json({
             sucess: true,
-            // token
+            token
         })
     }
     catch (err) {
