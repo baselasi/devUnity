@@ -48,15 +48,7 @@ export default function SginUp({ onAction }: ChildProps): JSX.Element {
         });
         return formDataObject
     }
-    // async function postUser(form: HTMLFormElement | undefined) {
-    //     console.log(regitrationForm)
-    //     new FormData(form).entries()
-    // }
-    /*let myForm = new FormData(regitratiForm).entries()
-  const response = fetch("http://corsoreindal.somee.com/api/palestra", {
-      method : "POST",headers:{"content-type":"application/json;charset=UTF-8"},
-      body:JSON.stringify(Object.fromEntries(myForm))
-  })*/
+
     return (
         <div className="w-75 rounded" >
             <h2 style={{ fontFamily: "'Shrikhand'", color: "#0000ff" }} className="text-center text-primary">GET STARTED</h2>
