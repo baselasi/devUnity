@@ -88,7 +88,5 @@ export default function SginUp({ onAction }: ChildProps): JSX.Element {
             </form>
             <small style={{ color: "white" }}>already a memebre?<span onClick={() => changeForm(true)} style={{ color: "#0000ff", cursor: "pointer" }} ><i>login</i></span></small>
         </div>
-
-
     )
 }

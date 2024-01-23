@@ -3,14 +3,18 @@ import "../../../cssFiles/comon.css"
 import { ChildProps } from "../../../utility/comonInterfaces";
 import { UserLogin } from "../../../utility/user";
 import { useNavigate } from 'react-router-dom';
-export default function SginIn({ onAction }: ChildProps) {
-    const navigate = useNavigate()
 
+import { User } from "../../../utility/comonInterfaces";
+import { BaseResponse } from "../../../api/_baseApi";
+
+
+export default function SginIn({ onAction }: ChildProps) {
     const [myForm, setMyForm] = useState<UserLogin>({
         email: "",
         password: ""
     })
 
+    const navigate = useNavigate()
     const loginForm = useRef<HTMLFormElement>(null)
 
     function handelChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -30,10 +34,10 @@ export default function SginIn({ onAction }: ChildProps) {
                 method: "POST", headers: { "content-type": "application/json;charset=UTF-8" },
                 body: JSON.stringify(Object.fromEntries(formDataObject))
             })
-            const data = await response.json()
-            console.log(data)
-            if (data.sucess) {
-                callbak(data.token)
+            const res = await response.json()
+            console.log(res)
+            if (res.sucess) {
+                callbak(res)
                 navigate('/dashboard');
             }
         } catch (error) {
@@ -49,8 +53,14 @@ export default function SginIn({ onAction }: ChildProps) {
         return formDataObject
     }
 
-    function setToken(token: string) {
-        localStorage.setItem("token", token)
+    function handelResponse<T>(res:BaseResponse) {
+        localStorage.setItem("token", res.data.token)
+        let user = new User()
+        Object.keys(user).forEach((key) => {
+            if (key in res.data.user) {
+                user[key as keyof User] = res.data.user[key as keyof T];
+            }
+        });
     }
 
     function hangeForm(value: boolean) {
@@ -70,7 +80,7 @@ export default function SginIn({ onAction }: ChildProps) {
                     <label htmlFor="exampleInputPassword1">Password</label>
                 </div>
                 <div className="form-group col-12">
-                    <input className="btn my-btn col-12 mt-3" onClick={() => submitForm(myForm, setToken)} type="button" value="login" />
+                    <input className="btn my-btn col-12 mt-3" onClick={() => submitForm(myForm, handelResponse)} type="button" value="login" />
                 </div>
             </form>
             <small style={{ color: "white" }}>not a memebre?<span onClick={() => hangeForm(false)} style={{ color: "#0000ff", cursor: "pointer" }} ><i>signup</i></span></small>

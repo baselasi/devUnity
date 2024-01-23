@@ -39,7 +39,7 @@ const userShema = new mongoose.Schema({
         minLenght:[6,"passowrd must have 6 charecters"],
         unique:false,
     },
-    role:{
+    userRole:{
         type: String,
         default:""
     }
