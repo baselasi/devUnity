@@ -16,11 +16,22 @@ mongoose.connect("mongodb+srv://bassel:basseltestapp@test.nhj585q.mongodb.net/?r
 .then(()=>console.log("sucess to connect to mongodb"))
 .catch((err)=>console.log(err))
 
+
+
+
+
 const userRouter = require("./routes/user") 
+const taskRouter = require("./routes/tasksRouters/taskRouter")
+const columnRouter = require("./routes/tasksRouters/columnRouter")
+
 
 const port = 4000
 app.use(cors())
 app.use("/api",userRouter)
+app.use("/api",taskRouter)
+app.use("/api",columnRouter)
+
+
 
 app.listen(port, () => {
   console.log(`hello  ${port}`)

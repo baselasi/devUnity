@@ -1,36 +1,25 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// // import userProfileReducer from './reducers/userProfileReducer'; // Create this file to define your userProfileReducer
-
-// const store = configureStore({
-//   reducer: {
-//     userProfile: userProfileReducer,
-//   },
-// });
-
-// export default store;
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
+import { User } from '../utility/comonInterfaces';
 
 interface UserState {
-    user: UserModel | null;
+    userInfo: User | null;
   }
   
-  interface UserModel {
-    id: string;
-    username: string;
-  }
+  // interface UserModel {
+  //   id: string;
+  //   username: string;
+  // }
   
   const initialState: UserState = {
-    user: null,
+    userInfo: null,
   };
   
   const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-      setUser: (state, action: PayloadAction<UserModel | null>) => {
-        state.user = action.payload;
+      setUser: (state, action: PayloadAction<User | null>) => {
+        state.userInfo= action.payload;
       },
     },
   });

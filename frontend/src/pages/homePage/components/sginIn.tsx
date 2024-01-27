@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
-import "../../../cssFiles/comon.css"
-import { ChildProps } from "../../../utility/comonInterfaces";
-import { UserLogin } from "../../../utility/user";
 import { useNavigate } from 'react-router-dom';
 
+import "../../../cssFiles/comon.css"
+
+import { ChildProps } from "../../../utility/comonInterfaces";
+import { UserLogin } from "../../../utility/user";
 import { User } from "../../../utility/comonInterfaces";
 import { BaseResponse } from "../../../api/_baseApi";
 
+//STORE REGION
+import { setUser } from "../../../storeSlices/userMoudleSlice";
+import { useDispatch } from "react-redux";
 
 export default function SginIn({ onAction }: ChildProps) {
     const [myForm, setMyForm] = useState<UserLogin>({
@@ -16,6 +20,7 @@ export default function SginIn({ onAction }: ChildProps) {
 
     const navigate = useNavigate()
     const loginForm = useRef<HTMLFormElement>(null)
+    const dispatch = useDispatch();
 
     function handelChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target
@@ -35,7 +40,6 @@ export default function SginIn({ onAction }: ChildProps) {
                 body: JSON.stringify(Object.fromEntries(formDataObject))
             })
             const res = await response.json()
-            console.log(res)
             if (res.sucess) {
                 callbak(res)
                 navigate('/dashboard');
@@ -61,6 +65,7 @@ export default function SginIn({ onAction }: ChildProps) {
                 user[key as keyof User] = res.data.user[key as keyof T];
             }
         });
+        dispatch(setUser(user))
     }
 
     function hangeForm(value: boolean) {
