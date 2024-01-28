@@ -6,7 +6,7 @@ const cookiesParser = require("cookie-parser")
 require('dotenv').config();
 const morgan = require("morgan")
 const cors = require("cors")
-
+const Project =require("./models/projects/projectModle")
 
 app.use((morgan("dev")))
 app.use(bodyParse.json())
@@ -23,15 +23,14 @@ mongoose.connect("mongodb+srv://bassel:basseltestapp@test.nhj585q.mongodb.net/?r
 const userRouter = require("./routes/user") 
 const taskRouter = require("./routes/tasksRouters/taskRouter")
 const columnRouter = require("./routes/tasksRouters/columnRouter")
-
+const projectRouter = require("./routes/projectRoutes/projectRoute")
 
 const port = 4000
 app.use(cors())
+app.use("/ap",projectRouter)
 app.use("/api",userRouter)
 app.use("/api",taskRouter)
 app.use("/api",columnRouter)
-
-
 
 app.listen(port, () => {
   console.log(`hello  ${port}`)

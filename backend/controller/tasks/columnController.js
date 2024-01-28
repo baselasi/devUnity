@@ -1,5 +1,6 @@
-
 const Column = require("../../models/taskes/columnMoudle")
+const {MongoClient} = require("mongoose")
+
 
 exports.createNewColumn = async function (req,res){
     try {
@@ -10,6 +11,21 @@ exports.createNewColumn = async function (req,res){
         })
     } catch (error) {
         return res.status(400).json({
+            sucess:false,
+            message: error.message
+        })
+    }
+}
+
+exports.getColumn = async function(req,res){
+    try{
+        const cloumns = await Column.find()
+        return res.status(200).json({
+            sucess:true,
+            cloumns
+        })
+    }catch(err){
+        res.status(400).json({
             sucess:false,
             message: err.message
         })

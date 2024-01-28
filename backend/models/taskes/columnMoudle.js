@@ -11,6 +11,12 @@ const columnSchema = new mongoose.Schema({
     position:{
         type:Number,
         // required   ???
+    },
+    comment:{
+        type:String
+    },
+    creator:{
+        type:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     }
 }) 
 

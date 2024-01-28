@@ -17,11 +17,19 @@ const taskSchema = new mongoose.Schema({
     taskName:{
         type:String,
     },
-    column_id:{
-        type:String
+    columnId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Column' },
+    assignee:{
+        userName:{
+            type:String
+        },
+        userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     },
-    assignee:[assigneeProfile],
-    taskCreator:[assigneeProfile],
+    taskCreator:{
+        userName:{
+            type:String
+        },
+        userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    },
     labels:{
         type:[Number]
     },
