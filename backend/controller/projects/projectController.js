@@ -20,7 +20,7 @@ exports.createProject = async (req,res)=>{
 
 exports.getProjectsasync = async function (criteria) {
     try {
-        const projects = await Project.find();
+        const projects = await Project.find(criteria);
         return res.status(400).json({
             sucess:true,
             projects
