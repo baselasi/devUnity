@@ -19,7 +19,7 @@ exports.createNewColumn = async function (req,res){
 
 exports.getColumn = async function(req,res){
     try{
-        const cloumns = await Column.find()
+        const cloumns = await Column.find().populate('projectId')
         return res.status(200).json({
             sucess:true,
             cloumns

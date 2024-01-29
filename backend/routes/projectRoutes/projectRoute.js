@@ -1,11 +1,11 @@
 
-const {createProject} = require("../../controller/projects/projectController")
+const {createProject,getProjectsasync} = require("../../controller/projects/projectController")
 const express = require("express")
 
 
 
-const route = express.Router()
+const router = express.Router()
 
-route.post=("/project",createProject)
-
-module.exports = route
+router.post("/project",createProject)
+router.get("/project",getProjectsasync)
+module.exports = router

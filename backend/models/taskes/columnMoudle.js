@@ -12,12 +12,13 @@ const columnSchema = new mongoose.Schema({
         type:Number,
         // required   ???
     },
+    projectId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }
+    ,
     comment:{
         type:String
     },
-    creator:{
-        type:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    }
+    creator: {type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    
 }) 
 
 module.exports = mongoose.model("cloumn",columnSchema)

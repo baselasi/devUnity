@@ -27,7 +27,7 @@ const projectRouter = require("./routes/projectRoutes/projectRoute")
 
 const port = 4000
 app.use(cors())
-app.use("/ap",projectRouter)
+app.use("/api",projectRouter)
 app.use("/api",userRouter)
 app.use("/api",taskRouter)
 app.use("/api",columnRouter)
