@@ -4,6 +4,12 @@ export default function TaskTabel():JSX.Element{
     useEffect((()=>{
         
     }),[])
+    
+    async function getColumn(){
+        
+    }
+
+
     return(
         <>
             <div>

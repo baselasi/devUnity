@@ -17,6 +17,6 @@ export async function postRequest(){
 
 }
 
-// export async function getData<T>({apiUrl}:{apiUrl:string}): Promise<BaseResponse<T>> {
+// export async function getData<T>({apiUrl}:{apiUrl:string}): Promise<BaseResponse> {
 //     let BaseResponse= new BaseResponse<T>()
 // }
