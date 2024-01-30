@@ -16,3 +16,7 @@ export class BaseResponse{
 export async function postRequest(){
 
 }
+
+// export async function getData<T>({apiUrl}:{apiUrl:string}): Promise<BaseResponse<T>> {
+//     let BaseResponse= new BaseResponse<T>()
+// }

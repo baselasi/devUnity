@@ -34,6 +34,7 @@ export default function SginIn({ onAction }: ChildProps) {
 
     async function submitForm(form: UserLogin, callbak: (value: any) => void) {
         const formDataObject = createFormData(form)
+        console.log(formDataObject)
         try {
             const response = await fetch("api/login", {
                 method: "POST", headers: { "content-type": "application/json;charset=UTF-8" },

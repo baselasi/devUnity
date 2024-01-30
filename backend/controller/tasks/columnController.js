@@ -17,18 +17,16 @@ exports.createNewColumn = async function (req,res){
     }
 }
 
-exports.getColumn = async function(req,res){
+exports.getColumn = async function(criteria){
     try{
-        const cloumns = await Column.find().populate('projectId')
+        const cloumns = await Column.find(criteria)  //.populate('projectId')
         return res.status(200).json({
             sucess:true,
             cloumns
         })
     }catch(err){
-        res.status(400).json({
-            sucess:false,
-            message: err.message
-        })
+        console.log(err)
+       throw err
     }
 }
 

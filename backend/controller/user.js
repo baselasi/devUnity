@@ -8,6 +8,7 @@ require('dotenv').config();
 exports.checkUser = async (req,res,next)=>{
     const {email} = req.body
     const userExist = await User.findOne({email}) //check if email already exist
+    console.log(req)
     if(userExist){
         return res.status(400).json({
             sucess:false,
@@ -72,7 +73,10 @@ exports.signUp = async (req, res, next) => {
 
 
 exports.singIn = async function (req, res) {
+    console.log(req.body)
+    
     try {
+
         const { email, password } = req.body
         if (!email || !password) {
             return res.status(400).json({
@@ -95,6 +99,8 @@ exports.singIn = async function (req, res) {
                 message: "not valid passowrd"
             })
         }
+    console.log(req.body)
+
         const token = user.generateToken()
         const data ={token,user}
         return res.status(200).json({
