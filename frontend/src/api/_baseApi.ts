@@ -1,22 +1,31 @@
+import axios from "axios"
 
-
-
-export class BaseResponse{
-    sucess?:boolean
-    status?:number
-    errore?:Error
-    data?:any
-    total?:number
-    constructor(){
-        this.sucess =true
-        this.status =200
+const axiosInstance = axios.create({
+})
+export class BaseResponse<type>{
+    sucess?: boolean
+    status?: number
+    errore?: Error
+    data?: any
+    total?: number
+    constructor() {
+        this.sucess = true
+        this.status = 200
     }
 }
 
-export async function postRequest(){
+export async function postRequest() {
 
 }
 
-// export async function getData<T>({apiUrl}:{apiUrl:string}): Promise<BaseResponse> {
-//     let BaseResponse= new BaseResponse<T>()
-// }
+export async function getData<T>({ apiUrl }: { apiUrl: string }): Promise<BaseResponse<T>> {
+    let baseResponse = new BaseResponse<T>()
+    try {
+        return baseResponse
+    } catch (err) {
+        console.log(err)
+        baseResponse.sucess = false
+        baseResponse.status = 500
+        return baseResponse
+    }
+}
