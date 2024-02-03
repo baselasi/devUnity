@@ -21,10 +21,11 @@ exports.createProject = async (req,res)=>{
 exports.getProjectsasync = async function (criteria) {
     try {
         const projects = await Project.find(criteria);
-        return res.status(400).json({
-            sucess:true,
-            projects
-        });
+        // return res.status(400).json({
+        //     sucess:true,
+        //     projects
+        // });
+        return projects
     } catch (error) {
         console.error('Error fetching projects:', error);
         throw error;

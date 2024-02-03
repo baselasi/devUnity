@@ -58,7 +58,7 @@ export default function SginIn({ onAction }: ChildProps) {
         return formDataObject
     }
 
-    function handelResponse<T>(res:BaseResponse) {
+    function handelResponse<T>(res:BaseResponse<T>) {
         localStorage.setItem("token", res.data.token)
         let user = new User()
         Object.keys(user).forEach((key) => {
@@ -66,7 +66,8 @@ export default function SginIn({ onAction }: ChildProps) {
                 user[key as keyof User] = res.data.user[key as keyof T];
             }
         });
-        dispatch(setUser(user))
+        console.log(user)
+        dispatch(setUser( user))
     }
 
     function hangeForm(value: boolean) {

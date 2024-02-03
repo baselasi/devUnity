@@ -1,4 +1,6 @@
-
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 .my-btn{
     background-color: #0000ff !important;
@@ -7,4 +9,7 @@
 
 .my-backround{
     background-color: "#333333"
+}
+
+.my-tooltip{
 }

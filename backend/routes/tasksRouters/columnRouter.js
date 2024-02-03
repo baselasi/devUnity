@@ -9,10 +9,10 @@ router.post("/column",createNewColumn)
 router.get("/column",async (req,res)=>{
     const criteria = req.query.criteria ? JSON.parse(req.query.criteria) : {};
     try{
-        const projects = await getColumn(criteria)
+        const data = await getColumn(criteria)
         res.status(200).json({
             sucess:true,
-            projects
+            data
         })
     }catch(err){
         res.status(400).json({

@@ -12,8 +12,7 @@ const columnSchema = new mongoose.Schema({
         type:Number,
         // required   ???
     },
-    projectId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }
-    ,
+    projectId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' ,required:true},
     comment:{
         type:String
     },

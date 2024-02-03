@@ -20,10 +20,11 @@ exports.createNewColumn = async function (req,res){
 exports.getColumn = async function(criteria){
     try{
         const cloumns = await Column.find(criteria)  //.populate('projectId')
-        return res.status(200).json({
-            sucess:true,
-            cloumns
-        })
+        // return res.status(200).json({
+        //     sucess:true,
+        //     cloumns
+        // })
+        return cloumns
     }catch(err){
         console.log(err)
        throw err
