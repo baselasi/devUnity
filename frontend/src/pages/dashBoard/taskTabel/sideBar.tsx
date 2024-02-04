@@ -15,18 +15,15 @@ export default function SideBar(): JSX.Element {
     }), [])
 
     async function getProjects() {
-        let res = await getData({ apiUrl: `/api/project` })
+        let res = await getData({ apiUrl: `/api/project` },{projectId:""})
         // const projects =  res.data
         setProjects(res.data.data)
     }
 
     return (
         <div>
-                <ClikableLabel/>
-        
-            {
-                projects?.map((el)=>{
-                    return <button>{el.projectName}</button>
+            {projects?.map((el)=>{
+                    return <ClikableLabel {...{labeTest:el.projectName,tooltipsText:el.description}}/>
                 })}
         </div>
     )

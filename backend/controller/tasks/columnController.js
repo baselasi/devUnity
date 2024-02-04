@@ -1,6 +1,6 @@
 const Column = require("../../models/taskes/columnMoudle")
 const {MongoClient} = require("mongoose")
-
+const mongoose = require("mongoose")
 
 exports.createNewColumn = async function (req,res){
     try {
@@ -19,7 +19,9 @@ exports.createNewColumn = async function (req,res){
 
 exports.getColumn = async function(criteria){
     try{
-        const cloumns = await Column.find(criteria)  //.populate('projectId')
+        const projectIdObjectId =new mongoose.Types.ObjectId(criteria?.projectId);
+        console.log(projectIdObjectId)
+        const cloumns = await Column.find({projectId:projectIdObjectId})  //.populate('projectId')
         // return res.status(200).json({
         //     sucess:true,
         //     cloumns

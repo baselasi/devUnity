@@ -23,10 +23,16 @@ export async function postRequest() {
 
 }
 
-export async function getData<T>({ apiUrl }: { apiUrl: string }): Promise<BaseResponse<T>> {
+interface Criteria  {
+    projectId: string|undefined,
+    // Add other criteria if needed
+};
+
+
+export async function getData<T>({ apiUrl }: { apiUrl: string },criteria:Criteria): Promise<BaseResponse<T>> {
     let baseResponse = new BaseResponse<T>()
     try {
-        const res = await axiosInstance.get<T>(`${apiUrl}`)
+        const res = await axiosInstance.get<T>(`${apiUrl}`,{params:criteria})
         let data:any = res.data
         baseResponse.data = data
         baseResponse.status=res.status

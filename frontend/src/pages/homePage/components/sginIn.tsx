@@ -67,7 +67,7 @@ export default function SginIn({ onAction }: ChildProps) {
             }
         });
         console.log(user)
-        dispatch(setUser( user))
+        dispatch(setUser(user))
     }
 
     function hangeForm(value: boolean) {

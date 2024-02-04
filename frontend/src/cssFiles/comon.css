@@ -3,13 +3,18 @@
 @import 'tailwindcss/utilities';
 
 .my-btn{
-    background-color: #0000ff !important;
-    color: white;
+    background-color: #0000ff ;
 }
 
 .my-backround{
     background-color: "#333333"
 }
 
+
 .my-tooltip{
+    @apply  hidden bg-blue-950 text-black text-xs rounded p-1 absolute  -mt-8 left-1/2 transform -translate-x-1/2
+}
+
+.my-label{
+    @apply  text-white px-4 py-2 rounded transition duration-300 group-hover:bg-blue-950;
 }
