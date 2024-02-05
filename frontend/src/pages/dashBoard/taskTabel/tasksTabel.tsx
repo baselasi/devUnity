@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "./sideBar";
+import ColumnTabel from "./components/columnTable";
+
 import { getData } from "../../../api/_baseApi";
 
 import { useSelector } from "react-redux";
@@ -27,15 +29,16 @@ export default function TaskTabel(): JSX.Element {
         })
     }
 
-    console.log(columns)
 
     return (
         <>
-            <div>
+            <div className="flex overflow-x-scroll">
                 {columns?.map((el)=>{
-                    return el.columnName
+                    
+                    return <ColumnTabel {...el} />
                 })}
             </div>
+
         </>
     )
 }
