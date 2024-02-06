@@ -23,7 +23,6 @@ export default function Dashboard(): JSX.Element {
     console.log(userInfo)
     return (
         <>
-
             <QueryClientProvider client={queryClient}>
                 <Navbar />
                 <TaskTabel />
