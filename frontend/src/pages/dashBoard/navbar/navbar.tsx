@@ -13,7 +13,7 @@ interface Projects {
 }
 
 async function getProjects() {
-  const res = await getData({ apiUrl: "/api/project" },{projectId:""})
+  const res = await getData({ apiUrl: "/api/project" })
   return res.data.data
 }
 
