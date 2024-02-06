@@ -19,6 +19,7 @@ exports.createNewColumn = async function (req,res){
 
 exports.getColumn = async function(criteria){
     try{
+        console.log(criteria)
         const projectIdObjectId =new mongoose.Types.ObjectId(criteria?.projectId);
         console.log(projectIdObjectId)
         const cloumns = await Column.find({projectId:projectIdObjectId})  //.populate('projectId')
