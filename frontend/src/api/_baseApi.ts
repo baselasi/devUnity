@@ -29,10 +29,10 @@ interface Criteria  {
 };
 
 
-export async function getData<T>({ apiUrl }: { apiUrl: string },criteria:Criteria): Promise<BaseResponse<T>> {
+export async function getData<T>({ apiUrl }: { apiUrl: string }): Promise<BaseResponse<T>> {
     let baseResponse = new BaseResponse<T>()
     try {
-        const res = await axiosInstance.get<T>(`${apiUrl}`,{params:criteria})
+        const res = await axiosInstance.get<T>(`${apiUrl}`)
         let data:any = res.data
         baseResponse.data = data
         baseResponse.status=res.status
