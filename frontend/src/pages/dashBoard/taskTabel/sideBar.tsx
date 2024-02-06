@@ -15,7 +15,7 @@ export default function SideBar(): JSX.Element {
     }), [])
 
     async function getProjects() {
-        let res = await getData({ apiUrl: `/api/project` },{projectId:""})
+        let res = await getData({ apiUrl: `/api/project` })
         // const projects =  res.data
         setProjects(res.data.data)
     }
