@@ -3,6 +3,7 @@ import SideBar from "./sideBar";
 import ColumnTabel from "./components/columnTable";
 
 import { getData } from "../../../api/_baseApi";
+import { getCoumnsByProjectId } from "../../../api/columsApi";
 
 import { useSelector } from "react-redux";
 import rootReducer, { RootState } from "../../../reducers/rootReducer";
@@ -23,22 +24,19 @@ export default function TaskTabel(): JSX.Element {
     }), [project])
 
     async function getProjects() {
-        let res = await getData({ apiUrl: `/api/column` }, { projectId: project?._id })
+        let res = await getCoumnsByProjectId(project?._id)
         setColumns(() => {
-            return res.data.data
+            return res?.data?.data
         })
     }
-
 
     return (
         <>
             <div className="flex overflow-x-scroll">
                 {columns?.map((el)=>{
-                    
                     return <ColumnTabel {...el} />
                 })}
             </div>
-
         </>
     )
 }
