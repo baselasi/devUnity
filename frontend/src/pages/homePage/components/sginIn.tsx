@@ -34,7 +34,6 @@ export default function SginIn({ onAction }: ChildProps) {
 
     async function submitForm(form: UserLogin, callbak: (value: any) => void) {
         const formDataObject = createFormData(form)
-        console.log(formDataObject)
         try {
             const response = await fetch("api/login", {
                 method: "POST", headers: { "content-type": "application/json;charset=UTF-8" },
@@ -58,7 +57,7 @@ export default function SginIn({ onAction }: ChildProps) {
         return formDataObject
     }
 
-    function handelResponse<T>(res:BaseResponse<T>) {
+    function handelResponse<T>(res: BaseResponse<T>) {
         localStorage.setItem("token", res.data.token)
         let user = new User()
         Object.keys(user).forEach((key) => {
@@ -66,7 +65,6 @@ export default function SginIn({ onAction }: ChildProps) {
                 user[key as keyof User] = res.data.user[key as keyof T];
             }
         });
-        console.log(user)
         dispatch(setUser(user))
     }
 
@@ -75,16 +73,16 @@ export default function SginIn({ onAction }: ChildProps) {
     }
 
     return (
-        <div className="w-75 rounded" >
+        <div className="w-3/4 rounded" >
             <h2 style={{ fontFamily: "'Shrikhand'" }} className="text-center text-primary">WELCOME BACK</h2>
-            <form className="text-primary" ref={loginForm}>
-                <div className="form-floating mb-3">
-                    <input type="email" name="email" onChange={handelChange} className="form-control" id="floatingInput" placeholder="name@example.com" />
-                    <label htmlFor="floatingInput">Email address</label>
+            <form className="  shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={loginForm}>
+                <div className="relative mb-4 " >
+                    <label htmlFor="floatingInput" className="">Email address</label>
+                    <input type="email" name="email" onChange={handelChange} className="" id="floatingInput" placeholder="name@example.com" />
                 </div>
-                <div className="form-floating">
-                    <input type="password" name="password" onChange={handelChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                <div className="relative ">
                     <label htmlFor="exampleInputPassword1">Password</label>
+                    <input type="password" name="password" onChange={handelChange} className="" id="exampleInputPassword1" placeholder="Password" />
                 </div>
                 <div className="form-group col-12">
                     <input className="btn my-btn col-12 mt-3" onClick={() => submitForm(myForm, handelResponse)} type="button" value="login" />

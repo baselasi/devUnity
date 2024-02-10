@@ -25,8 +25,8 @@ export default function HomePage(): JSX.Element {
                                 </div>
 
                         </div>
-                        <div className="col-span-4 ">
-                                <div className="flex flex-col justify-center " style={{ height: "100vh" }}>
+                        <div className="col-span-4  ">
+                                <div className="flex justify-center items-center" style={{ height: "100vh" }}>
                                         {!isNullOrUndefined(action) ? <Form onAction={handelAction} type={action} /> : <ChooseAction onAction={handelAction} />}
                                 </div>
                                 {/* <div className="col-12">

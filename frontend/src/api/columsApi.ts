@@ -6,5 +6,5 @@ import { ColumnModul } from "../utility/columnModul";
 
 
 export async function getCoumnsByProjectId(porjectId:string|undefined):Promise<BaseResponse<ColumnModul>> {
-    return await getData({apiUrl:`/api/column/projectId=${porjectId}`})
+    return await getData({apiUrl:`/api/column?projectId=${porjectId}`})
 }

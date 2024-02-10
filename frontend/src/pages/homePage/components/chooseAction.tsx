@@ -13,9 +13,9 @@ export default function ChooseAction({onAction}:ChildProps):JSX.Element{
     }
 
     return(
-        <div className="col-6 align-items-center d-flex h-50 justify-content-between">
-            <button className="btn my-btn col-5 rounded-5" onClick={()=>chooseForm(false)}>Sgin Up</button>
-            <button className="btn  my-btn col-5 rounded-5" onClick={()=>chooseForm(true)}>login</button>
+        <div className="grid grid-cols-8 w-full">
+            <button className="my-btn   col-start-2 col-end-4" onClick={()=>chooseForm(false)}>Sgin Up</button>
+            <button className="  my-btn  col-start-6 col-span-2" onClick={()=>chooseForm(true)}>login</button>
         </div>
     )
 }

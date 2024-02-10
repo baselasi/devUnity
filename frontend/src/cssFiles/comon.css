@@ -4,6 +4,7 @@
 
 .my-btn{
     background-color: #0000ff ;
+    @apply rounded-xl shadow-lg h-10 text-yellow-50 hover:bg-blue-950 
 }
 
 .my-backround{
