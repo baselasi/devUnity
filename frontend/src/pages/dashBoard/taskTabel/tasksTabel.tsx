@@ -30,11 +30,13 @@ export default function TaskTabel(): JSX.Element {
         })
     }
 
+    console.log(columns)
+
     return (
         <>
-            <div className="flex overflow-x-scroll">
+            <div className="flex overflow-x-scroll bg-neutral-500">
                 {columns?.map((el)=>{
-                    return <ColumnTabel {...el} />
+                    return <ColumnTabel key={el._id} {...el} />
                 })}
             </div>
         </>

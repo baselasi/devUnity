@@ -2,9 +2,14 @@ import axios from "axios"
 
 const baseUrlApi="http://localhost:4000/"
 
+const token =localStorage.getItem("token")
 
 const axiosInstance = axios.create({
-    baseURL: baseUrlApi
+    baseURL: baseUrlApi,
+    headers: {
+        'Content-Type': 'application/json', // Default content type
+        'token': `${token}` 
+      }
 })
 
 export class BaseResponse<type>{

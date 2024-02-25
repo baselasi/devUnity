@@ -8,6 +8,8 @@ const router = express.Router()
 
 router.post("/project",createProject)
 router.get("/project",async (req,res)=>{
+    debugger
+    console.log(req)
     const criteria = req.query.criteria ? JSON.parse(req.query.criteria) : {};
     try{
         const data = await getProjectsasync(criteria)

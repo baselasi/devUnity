@@ -5,9 +5,7 @@ const assigneeProfile = new mongoose.Schema({
     userName:{
         type:String
     },
-    user_id:{
-        type:String
-    },
+    userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     userSigla:{
         type:String
     }
@@ -18,18 +16,37 @@ const taskSchema = new mongoose.Schema({
         type:String,
     },
     columnId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Column' },
-    assignee:{
+    assignee: new mongoose.Schema({
         userName:{
             type:String
         },
-        userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    },
-    taskCreator:{
+        id:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        userSigla:{
+            type:String
+        }
+    }),
+    // {
+        
+        // userName:{
+        //     type:String
+        // },
+        // userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    // },
+    creator:new mongoose.Schema({
         userName:{
             type:String
         },
-        userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    },
+        id:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        userSigla:{
+            type:String
+        }
+    }),
+    // {
+    //     userName:{
+    //         type:String
+    //     },
+    //     userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    // },
     labels:{
         type:[Number]
     },

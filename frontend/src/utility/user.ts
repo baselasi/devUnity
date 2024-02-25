@@ -13,3 +13,8 @@ export interface UserLogin{
     email:string,
     password:string
 }
+
+export interface UserPublicProfile{
+    userName:string,
+    id:string,
+}

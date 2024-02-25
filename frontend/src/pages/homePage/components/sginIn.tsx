@@ -74,21 +74,22 @@ export default function SginIn({ onAction }: ChildProps) {
 
     return (
         <div className="w-3/4 rounded" >
-            <h2 style={{ fontFamily: "'Shrikhand'" }} className="text-center text-primary">WELCOME BACK</h2>
-            <form className="  shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={loginForm}>
-                <div className="relative mb-4 " >
-                    <label htmlFor="floatingInput" className="">Email address</label>
-                    <input type="email" name="email" onChange={handelChange} className="" id="floatingInput" placeholder="name@example.com" />
+            <form className=" bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" ref={loginForm}>
+            <h2 style={{ fontFamily: "'Shrikhand'" ,color: "#0000ff"  }} className="text-center text-primary">WELCOME BACK</h2>
+
+                <div className="mb-4 " >
+                    <label htmlFor="floatingInput"  className="text-blue-500">Email address</label>
+                    <input type="email" name="email" onChange={handelChange} className="my-input " id="floatingInput" placeholder="name@example.com" />
                 </div>
                 <div className="relative ">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" onChange={handelChange} className="" id="exampleInputPassword1" placeholder="Password" />
+                    <label htmlFor="exampleInputPassword1" className="text-blue-500">Password</label>
+                    <input type="password" name="password" onChange={handelChange} className="my-input" id="exampleInputPassword1" placeholder="Password" />
                 </div>
-                <div className="form-group col-12">
-                    <input className="btn my-btn col-12 mt-3" onClick={() => submitForm(myForm, handelResponse)} type="button" value="login" />
+                <div className="grid grid-cols-12 py-4 ">
+                    <input className=" my-btn col-start-4 col-end-10 mt-3" onClick={() => submitForm(myForm, handelResponse)} type="button" value="login" />
                 </div>
             </form>
-            <small style={{ color: "white" }}>not a memebre?<span onClick={() => hangeForm(false)} style={{ color: "#0000ff", cursor: "pointer" }} ><i>signup</i></span></small>
+            <small style={{ color: "white" }}>not a memebre?<span onClick={() => hangeForm(false)} style={{ color: "#0000ff", cursor: "pointer",fontWeight:"900",fontSize:"medium" }} ><i>SignUp</i></span></small>
         </div>
     )
 }

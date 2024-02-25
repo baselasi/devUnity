@@ -68,8 +68,6 @@ userShema.methods.checkPassword = async function(reqPassword){
     // console.log(result)
     // // Return the result of the comparison (true if passwords match, false otherwise)
     // return result;
-    console.log(reqPassword)
-    console.log(this.password)
     let result = false
     if(reqPassword==this.password){
         result= true
@@ -82,7 +80,7 @@ userShema.methods.checkPassword = async function(reqPassword){
 // generate Token after login
 userShema.methods.generateToken = function(){
     return jwt.sign({
-        id: this.id
+        user: this
       }, process.env.JWB_SECRET, { expiresIn: 60 * 60 })
 }
 

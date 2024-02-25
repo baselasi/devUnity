@@ -13,8 +13,8 @@ export default function HomePage(): JSX.Element {
         }
 
         return (
-                <div className="grid grid-cols-12 app" style={{ backgroundColor: "#333333", fontWeight: "500", fontSize: "large" }}>
-                        <div className="col-span-8 flex-col flex justify-center text-center bg-black" style={{ color: " white" }}>
+                <div className="grid grid-cols-5 app" style={{ backgroundColor: "#333333", fontWeight: "500", fontSize: "large" }}>
+                        <div className="col-span-3 flex-col flex justify-center text-center bg-black" style={{ color: " white" }}>
                                 <div className="flex justify-center">
                                         <img src="./imgs/logo.png" alt="" />
                                 </div>
@@ -25,7 +25,7 @@ export default function HomePage(): JSX.Element {
                                 </div>
 
                         </div>
-                        <div className="col-span-4  ">
+                        <div className="col-span-2  ">
                                 <div className="flex justify-center items-center" style={{ height: "100vh" }}>
                                         {!isNullOrUndefined(action) ? <Form onAction={handelAction} type={action} /> : <ChooseAction onAction={handelAction} />}
                                 </div>
