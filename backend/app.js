@@ -34,7 +34,7 @@ app.use("/api",userRouter)
 
 const {checkAuthentication} = require("./utility/checkAuthentication")
 
-//*PROCTED ROUTES*/
+//*PROCTED ROUTES*//
 app.use(checkAuthentication)
 app.use("/api",projectRouter)
 app.use("/api",taskRouter)

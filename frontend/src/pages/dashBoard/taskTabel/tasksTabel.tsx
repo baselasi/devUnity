@@ -30,7 +30,6 @@ export default function TaskTabel(): JSX.Element {
         })
     }
 
-    console.log(columns)
 
     return (
         <>

@@ -17,4 +17,5 @@ export interface UserLogin{
 export interface UserPublicProfile{
     userName:string,
     id:string,
+    userSigla:string
 }

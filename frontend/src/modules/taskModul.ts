@@ -6,6 +6,11 @@ export interface TaskModul{
     id:string,
     creator:UserPublicProfile,
     assignee:UserPublicProfile,
-    labels:any[],
+    labels:LabelsModul[],
     importance:number
+}
+
+export interface LabelsModul{
+    color:string,
+    name:string,
 }

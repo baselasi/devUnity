@@ -5,19 +5,25 @@ import { BaseResponse } from "./_baseApi";
 import { getData } from "./_baseApi";
 import { TaskModul } from "../modules/taskModul";
 
-async function getTasksByColumnId(columnId:string):Promise<TaskModul[]> {
-    const res = await getData({apiUrl:`/api/tasks?columnId=${columnId}`})
+export  async function getTasksByColumnId(columnId:string):Promise<TaskModul[]> {
+    const res = await getData({apiUrl:`/api/task?columnId=${columnId}`})
     let response:TaskModul[]
     let task:TaskModul
-    response =  res.data.map((el:any)=>{
-        task.assignee = el.assignee
-        task.creator = el.creator
-        task.importance = el.importance
-        task.id = el._id
-        task.taskName = el.taskName
-        task.labels = el.labels
-        return task
-
-    })
-    return response
+    console.log(res)
+    try {
+        response =  res.data.tasks.map((el:any)=>{
+            console.log(el.taskName)
+            debugger
+            task.taskName = el.taskName
+            console.log(task)
+            return task
+        })
+            console.log(response)
+            console.log(res.data.tasks)
+            return res.data.tasks
+    } catch (err) {
+        console.log(err )
+        return []
+    }
+   
 }

@@ -1,5 +1,6 @@
 
 
+const { default: mongoose } = require("mongoose")
 const Task = require("../../models/taskes/taskMoudle")
 
 
@@ -20,7 +21,9 @@ exports.createNewTask = async function (req,res){
 
 exports.getTask = async function(req,res){
     try {
-        const tasks = await Task.find({columnId})
+        const query = req.query
+        const _columnId = new mongoose.Types.ObjectId(query?.columnId)
+        const tasks = await Task.find({columnId:_columnId})
         res.status(200).json({
             sucess:true,
             tasks

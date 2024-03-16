@@ -1,14 +1,20 @@
 import React from "react";
 
 
+import { TaskModul } from "../../../../modules/taskModul";
 
 
-function taskCard():JSX.Element{
-    
+
+export default function TaskCard(prop:TaskModul):JSX.Element{
     return(
         <>
             <div>
-                
+                <h4>{prop.taskName}</h4>
+                {
+                    prop.labels.map((label)=>{
+                        return <div>{label.name}</div>
+                    })
+                }
             </div>
         </>
     )
