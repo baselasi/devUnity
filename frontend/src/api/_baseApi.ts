@@ -24,8 +24,22 @@ export class BaseResponse<type>{
     }
 }
 
-export async function postRequest() {
-
+export async function postData<T>({ apiUrl }: { apiUrl: string },body:string): Promise<BaseResponse<T>> {
+    let baseResponse = new BaseResponse<T>()
+    try {
+        const res = await axiosInstance.post<T>(`${apiUrl}`,body)
+        console.log(res)
+        let data:any = res.data
+        baseResponse.data = data
+        baseResponse.status=res.status
+        // baseResponse.sucess=res.scuess  // LOOK IT UP 
+        return baseResponse
+    } catch (err) {
+        console.log(err)
+        baseResponse.sucess = false
+        baseResponse.status = 500
+        return baseResponse
+    }
 }
 
 interface Criteria  {

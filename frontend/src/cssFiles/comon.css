@@ -7,6 +7,10 @@
     @apply rounded-xl shadow-lg h-10 text-yellow-50 hover:bg-blue-950 
 }
 
+.cancel-btn{
+    background-color: #7c7c7c ;
+    @apply rounded-xl shadow-lg h-10 text-yellow-50 hover:bg-gray-950
+}
 .my-backround{
     background-color: "#333333"
 }

@@ -20,7 +20,6 @@ export default function Dashboard(): JSX.Element {
     // useEffect
 
     const userInfo = useSelector((state: RootState) => state.user.userInfo);
-    console.log(userInfo)
     return (
         <>
             <QueryClientProvider client={queryClient}>
