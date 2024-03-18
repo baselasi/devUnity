@@ -33,7 +33,7 @@ export default function TaskTabel(): JSX.Element {
 
     return (
         <>
-            <div className="flex overflow-x-scroll bg-neutral-500">
+            <div className="flex overflow-x-scroll bg-neutral-900 text-neutral-200  ">
                 {columns?.map((el)=>{
                     return <ColumnTabel key={el._id} {...el} />
                 })}

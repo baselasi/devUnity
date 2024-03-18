@@ -12,7 +12,7 @@ export default function TaskCard(prop: TaskModul): JSX.Element {
     }
     return (
         <>
-            <div className="">
+            <div className="border-white rounded-md border-2 hover:bg-black hover:cursor-pointer p-2">
                 <h4>{prop.taskName}</h4>
                 {
                     prop.labels?.map((label) => {
