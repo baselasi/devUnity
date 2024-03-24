@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "./sideBar";
 import ColumnTabel from "./components/columnTable";
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import { getData } from "../../../api/_baseApi";
 import { getCoumnsByProjectId } from "../../../api/columsApi";
@@ -30,14 +31,21 @@ export default function TaskTabel(): JSX.Element {
         })
     }
 
+    function onDragEnd(result:any){
+        console.log(result)
+        console.log("dargend")
+    }
 
     return (
         <>
-            <div className="flex overflow-x-scroll bg-neutral-900 text-neutral-200  ">
-                {columns?.map((el)=>{
-                    return <ColumnTabel key={el._id} {...el} />
-                })}
-            </div>
+            <DragDropContext onDragEnd={(result)=>onDragEnd(result)} onDragStart={()=>console.log("drag")}>
+                <div className="flex overflow-x-scroll bg-neutral-900 text-neutral-200  ">
+                    {columns?.map((el) => {
+                        return <ColumnTabel key={el._id} {...el} />
+                    })}
+                </div>
+            </DragDropContext>
+
         </>
     )
 }

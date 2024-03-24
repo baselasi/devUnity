@@ -2,7 +2,7 @@ import { UserPublicProfile } from "../utility/user";
 
 export interface TaskModul{
     taskName?:string,
-    id?:string,
+    _id:string,
     creator?:UserPublicProfile,
     assignee?:UserPublicProfile,
     labels?:LabelsModul[],

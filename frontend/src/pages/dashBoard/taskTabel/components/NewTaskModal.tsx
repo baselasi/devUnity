@@ -17,8 +17,8 @@ export default function NewTaskModul(props: any): JSX.Element {
     useEffect(() => {
         setIsModalOpen((prev) => !prev)
     }, [props.isOpen])
-    const newTaskForm = useRef(null)
 
+    const newTaskForm = useRef(null)
 
     function handelInput(e: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = e.target

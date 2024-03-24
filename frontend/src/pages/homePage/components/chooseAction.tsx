@@ -1,10 +1,6 @@
 import React from "react";
 import "../../../cssFiles/comon.css"
 import { ChildProps } from "../../../utility/comonInterfaces";
-// interface ChildProps {
-//     // Define the type for the callback function to be passed to the parent
-//     onAction: (value: boolean) => void;
-// }
 
 export default function ChooseAction({onAction}:ChildProps):JSX.Element{
 

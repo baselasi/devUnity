@@ -1,12 +1,13 @@
+//react
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers/rootReducer";
-
+import { QueryClient, QueryClientProvider } from 'react-query';
+//components
 import Navbar from "./navbar/navbar";
 import TaskTabel from "./taskTabel/tasksTabel";
 import { ProjectModul } from "../../utility/projects";
 
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 interface projectsArray {

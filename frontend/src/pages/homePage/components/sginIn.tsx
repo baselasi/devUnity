@@ -1,14 +1,14 @@
+//react
 import React, { useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
+//css
 import "../../../cssFiles/comon.css"
-
+//components
 import { ChildProps } from "../../../utility/comonInterfaces";
 import { UserLogin } from "../../../utility/user";
 import { User } from "../../../utility/comonInterfaces";
 import { BaseResponse } from "../../../api/_baseApi";
-
-//STORE REGION
+//redux
 import { setUser } from "../../../storeSlices/userMoudleSlice";
 import { useDispatch } from "react-redux";
 
