@@ -29,7 +29,7 @@ export async function postData<T>({ apiUrl }: { apiUrl: string },body:string): P
     try {
         const res = await axiosInstance.post<T>(`${apiUrl}`,body)
         console.log(res)
-        let data:any = res.data
+        let data:T = res.data
         baseResponse.data = data
         baseResponse.status=res.status
         // baseResponse.sucess=res.scuess  // LOOK IT UP 
@@ -42,25 +42,32 @@ export async function postData<T>({ apiUrl }: { apiUrl: string },body:string): P
     }
 }
 
-interface Criteria  {
-    projectId: string|undefined,
-    // Add other criteria if needed
-};
-
-
 export async function getData<T>({ apiUrl }: { apiUrl: string }): Promise<BaseResponse<T>> {
-    let baseResponse = new BaseResponse<T>()
+    let baseResponse = new BaseResponse<T>
     try {
-        const res = await axiosInstance.get<T>(`${apiUrl}`)
-        let data:any = res.data
-        baseResponse.data = data
+        const res = await axiosInstance.get(`${apiUrl}`)
+        baseResponse.data =  res.data.data
         baseResponse.status=res.status
-        // baseResponse.sucess=res.scuess  // LOOK IT UP 
         return baseResponse
     } catch (err) {
         console.log(err)
         baseResponse.sucess = false
         baseResponse.status = 500
         return baseResponse
+    }
+}
+
+export async function patchData<T>({apiUrl}:{apiUrl:string},body:string):Promise<BaseResponse<T>> {
+    let baseResponse = new BaseResponse<T>
+    try {
+        const res = await axiosInstance.patch<T>(`${apiUrl}`,body)
+        baseResponse.status = res.status
+        baseResponse.data = res.data
+        return baseResponse
+    } catch (error) {
+        baseResponse.status=500
+        baseResponse.sucess=true
+        return  baseResponse
+        
     }
 }

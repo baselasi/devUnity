@@ -1,11 +1,10 @@
 
 
-import { promises } from "dns";
 import { BaseResponse } from "./_baseApi";
-import { getData, postData } from "./_baseApi";
+import { getData, postData, patchData } from "./_baseApi";
 import { TaskModul } from "../modules/taskModul";
 import { UserPublicProfile } from "../utility/user";
-import { Retryer } from "react-query/types/core/retryer";
+
 export interface TaskPostModul {
     taskName?: string,
     columnId?: string,
@@ -14,33 +13,42 @@ export interface TaskPostModul {
     importance?: number
 }
 
-export async function getTasksByColumnId(columnId: string): Promise<TaskModul[]> {
-    const res = await getData({ apiUrl: `/api/task?columnId=${columnId}` })
-    let response: TaskModul[]
-    let task: TaskModul
+export async function getTasksByColumnId<TaskModul>(columnId: string): Promise<BaseResponse<TaskModul>> {
+    const baseResponse = new BaseResponse<TaskModul>
     try {
-        response = res.data.tasks.map((el: any) => {
-            task = { ...el }
-            return task
-        })
-        return res.data.tasks
+        const res = await getData<TaskModul>({ apiUrl: `/api/task?columnId=${columnId}` })
+        return res
     } catch (err) {
         console.log(err)
-        return []
+        baseResponse.status=500
+        baseResponse.sucess=false
+        return baseResponse
     }
 }
 
-export async function postNewTask<T>(body: TaskPostModul|undefined): Promise<BaseResponse<T>> {
-    const baseResponse = new BaseResponse
+export async function postNewTask<TaskModul>(body: TaskPostModul | undefined): Promise<BaseResponse<TaskModul>> {
+    const baseResponse = new BaseResponse<TaskModul>
     const payload = JSON.stringify(body)
-    console.log(payload)
     try {
-        const res = await postData({ apiUrl: "/api/task" }, payload)
-        console.log(res)
-        return baseResponse
+        const res = await postData<TaskModul>({ apiUrl: "/api/task" }, payload)
+        return res
     } catch (err) {
         console.log(err)
+        baseResponse.status=500
+        baseResponse.sucess=false
         return baseResponse
     }
+}
 
+export async function patchTask<T>(body: any,taskIdd:string): Promise<BaseResponse<T>>{ ///// rethink types
+    const baseResponse = new BaseResponse<TaskModul>
+    const payload = JSON.stringify(body)
+    try{
+        const res = await patchData<TaskModul>({apiUrl:`/api/task?taskId=${taskIdd}`},payload)
+        return res
+    }catch(err){
+        baseResponse.status = 500
+        baseResponse.sucess = false
+        return baseResponse
+    }
 }

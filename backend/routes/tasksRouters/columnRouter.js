@@ -8,7 +8,7 @@ const router = express.Router()
 router.post("/column",createNewColumn)
 router.get("/column",async (req,res)=>{
     const criteria = req.query
-    console.log(criteria)  ///pass crietria as whole not as a object ???? 
+    ///pass crietria as whole not as a object ???? 
     try{
         const data = await getColumn(criteria)
         res.status(200).json({

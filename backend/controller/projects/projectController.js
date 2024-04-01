@@ -4,10 +4,10 @@ const Project = require("../../models/projects/projectModle")
 
 exports.createProject = async (req,res)=>{
     try{
-        const project = await Project.create(req.body)
+        const data = await Project.create(req.body)
         return res.status(400).json({
             sucess:true,
-            project
+            data
         })
     }catch(err){
        return  res.status(400).json({
@@ -19,12 +19,8 @@ exports.createProject = async (req,res)=>{
 
 exports.getProjectsasync = async function (criteria) {
     try {
-        const projects = await Project.find(criteria);
-        // return res.status(400).json({
-        //     sucess:true,
-        //     projects
-        // });
-        return projects
+        const data = await Project.find(criteria);
+        return data
     } catch (error) {
         console.error('Error fetching projects:', error);
         throw error;

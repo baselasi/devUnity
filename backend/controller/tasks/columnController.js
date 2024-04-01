@@ -4,10 +4,10 @@ const mongoose = require("mongoose")
 
 exports.createNewColumn = async function (req,res){
     try {
-        const column = await Column.create(req.body)
+        const data = await Column.create(req.body)
         return res.status(200).json({
             sucess:true,
-            column
+            data
         })
     } catch (error) {
         return res.status(400).json({
@@ -19,15 +19,13 @@ exports.createNewColumn = async function (req,res){
 
 exports.getColumn = async function(criteria){
     try{
-        console.log(criteria)
         const projectIdObjectId =new mongoose.Types.ObjectId(criteria?.projectId);
-        console.log(projectIdObjectId)
-        const cloumns = await Column.find({projectId:projectIdObjectId})  //.populate('projectId')
+        const data = await Column.find({projectId:projectIdObjectId})  //.populate('projectId')
         // return res.status(200).json({
         //     sucess:true,
         //     cloumns
         // })
-        return cloumns
+        return data
     }catch(err){
         console.log(err)
        throw err

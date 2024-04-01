@@ -16,6 +16,9 @@ const taskSchema = new mongoose.Schema({
         type:String,
     },
     columnId:{ type: mongoose.Schema.Types.ObjectId, ref: 'Column' },
+    index:{
+        type:Number,
+    },
     assignee: new mongoose.Schema({
         userName:{
             type:String
@@ -25,13 +28,6 @@ const taskSchema = new mongoose.Schema({
             type:String
         }
     }),
-    // {
-        
-        // userName:{
-        //     type:String
-        // },
-        // userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    // },
     creator:new mongoose.Schema({
         userName:{
             type:String
@@ -41,12 +37,6 @@ const taskSchema = new mongoose.Schema({
             type:String
         }
     }),
-    // {
-    //     userName:{
-    //         type:String
-    //     },
-    //     userId:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    // },
     labels:{
         type:[Number]
     },

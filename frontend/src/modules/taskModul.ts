@@ -6,7 +6,8 @@ export interface TaskModul{
     creator?:UserPublicProfile,
     assignee?:UserPublicProfile,
     labels?:LabelsModul[],
-    importance?:number
+    importance?:number,
+    index:number
 }
 
 export interface LabelsModul{

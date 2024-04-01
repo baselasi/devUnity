@@ -78,7 +78,6 @@ exports.singIn = async function (req, res) {
                 message: "email and password camp are requierd"
             })
         }
-        debugger
         const user = await User.findOne({ email })
         if (!user) {
             return res.status(400).json({

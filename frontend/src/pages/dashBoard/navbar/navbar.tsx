@@ -13,8 +13,8 @@ interface Projects {
 }
 
 async function getProjects() {
-  const res = await getData({ apiUrl: "/api/project" })
-  return res.data.data
+  const res = await getData<ProjectModul[]>({ apiUrl: "/api/project" })
+  return res.data
 }
 
 export default function Navbar(): JSX.Element {
