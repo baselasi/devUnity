@@ -33,7 +33,7 @@ exports.checkUser = async (req, res, next) => {
     } catch (err) {
         return res.status(400).json({
             sucess: false,
-            message: "somthing went wrong"
+            message: err.message
         })
     }
 }
@@ -49,6 +49,8 @@ exports.signUp = async (req, res, next) => {
         })
     }
     try {
+        console.log(req)
+        debugger
         let user = await User.create(req.body)
         user.userRole = req.body.userRole
         const id = user._id

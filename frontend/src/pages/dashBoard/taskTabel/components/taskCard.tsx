@@ -15,7 +15,7 @@ interface Props {
 
 export default function TaskCard({ task, index }: { task: TaskModul, index: number }): JSX.Element {
     return (
-            <Draggable draggableId={task._id} index={index} shouldRespectForcePress={false }>
+            <Draggable draggableId={task._id} index={index} shouldRespectForcePress={true }>
                 {(provided) => (
                     <div
                         style={{
@@ -28,7 +28,7 @@ export default function TaskCard({ task, index }: { task: TaskModul, index: numb
                         }}
                         ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} 
                     >
-                        <div className="border-white rounded-md border-2 hover:bg-black hover:cursor-pointer p-2" >
+                        <div className="border-white rounded-md border-2 hover:bg-black hover:cursor-pointer p-2 active:shadow-md active:shadow-white"  >
                             <h4>{task.taskName}</h4>
                             {
                                 task.labels?.map((label: any) => {

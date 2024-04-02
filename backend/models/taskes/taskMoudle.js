@@ -42,6 +42,9 @@ const taskSchema = new mongoose.Schema({
     },
     importance:{
         type:Number
+    },
+    description:{
+        type:String
     }
 })
 

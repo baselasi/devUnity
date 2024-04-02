@@ -20,7 +20,7 @@ export default function NewTaskModul(props: any): JSX.Element {
 
     const newTaskForm = useRef(null)
 
-    function handelInput(e: React.ChangeEvent<HTMLInputElement>) {
+    function handelInput(e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) {
         const { name, value } = e.target
         setTaskForm((prev) => {
             return {
@@ -47,9 +47,12 @@ export default function NewTaskModul(props: any): JSX.Element {
                     <div className="mb-4 " >
                         <input onChange={handelInput} type="text" name="taskName" className="my-input " id="floatingInput" placeholder="task tilte*" />
                     </div>
-                    <div className="relative ">
+                    <div className="relative mb-4 ">
                         {/* <label htmlFor="exampleInputPassword1" className="text-blue-500">Password</label> */}
-                        <input onChange={handelInput} type="number" name="impoartance" className="my-input" placeholder="task importance*" />
+                        <input onChange={handelInput} type="number" name="impoartance" className="my-input" placeholder="task importance" />
+                    </div>
+                    <div className="mb-4 " >
+                        <textarea  onChange={handelInput}  name="description" className="my-text-area "  placeholder="description" />
                     </div>
                 </form>
                 <div className="flex justify-end">

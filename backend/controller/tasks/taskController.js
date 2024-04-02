@@ -69,9 +69,7 @@ async function reOrederCollections(columnId, taskNewIndex, newTaskId,order,oldIn
             })
         }else{
             tasks.forEach(async (task,index) => {
-                debugger
-                console.log(task)
-                if (task.index <= taskNewIndex && task.index >= oldIndex  && !task._id.equals(newTaskId)) {
+                if (task.index <= taskNewIndex && task.index > oldIndex  && !task._id.equals(newTaskId)) {
                     task.index = task.index  -1
                 }
                await task.save();

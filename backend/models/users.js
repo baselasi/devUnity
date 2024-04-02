@@ -37,7 +37,7 @@ const userShema = new mongoose.Schema({
         trim:true,
         required:[true ,"please add a email adress"],
         minLenght:[6,"passowrd must have 6 charecters"],
-        unique:false,
+        
     },
     userRole:{
         type: String,
