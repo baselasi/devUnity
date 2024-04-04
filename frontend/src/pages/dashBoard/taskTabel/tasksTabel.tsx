@@ -39,9 +39,9 @@ export default function TaskTabel(): JSX.Element {
     async function onDragEnd(result: any) {
         const columnId: string = result.destination.droppableId
         const payload = { columnId: columnId , index :result.destination.index}
-        const res = await patchTask(payload, result.draggableId)
+        const res = await patchTask(payload, result.draggableId) // find another way to remove await, it will create a delay bug after moving the task in the new position 
         // await getProjects()
-        setResault({task:res.data,dragResault:result})
+        setResault({task:res.data,dragResault:result})//find a way to set dragging results before the patch response, by giving it a initial value 
 }
 return (
     <>
