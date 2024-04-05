@@ -25,9 +25,9 @@
 }
 
 .my-input{
-    @apply rounded w-full shadow-sm bg-slate-300 h-10 px-2
+    @apply rounded text-black w-full shadow-sm  h-10 px-2
 }
 
 .my-text-area{
-    @apply rounded w-full shadow-sm bg-slate-300 px-2 h-28
+    @apply rounded w-full shadow-sm  px-2 h-28 text-black
 }

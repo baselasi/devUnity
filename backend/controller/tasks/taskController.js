@@ -44,8 +44,11 @@ exports.getTask = async function (req, res) {
 
 exports.patchTask = async function (taskId, update) {
     try {
+        console.log(update)
         const task = await Task.findById(taskId)
+        console.log(task)
         const updateTask = await Task.findByIdAndUpdate(taskId, update, { new: true })
+        console.log(task)
         let order = updateTask.index < task.index ? true : false 
         await reOrederCollections(updateTask.columnId, updateTask.index, updateTask._id,order,task.index)
         return updateTask
@@ -55,26 +58,42 @@ exports.patchTask = async function (taskId, update) {
 }
 
 async function reOrederCollections(columnId, taskNewIndex, newTaskId,order,oldIndex) {
+    console.log(oldIndex)
+    console.log(taskNewIndex)
     try {
         const _columnId = new mongoose.Types.ObjectId(columnId)
         let tasks = await Task.find({ columnId: _columnId })
-        tasks = tasks.sort((a,b)=>a.index-b.index)
+        // tasks = tasks.sort((a,b)=>a.index-b.index)
+        // console.log(tasks)
+        // if(order){
+        //     tasks.forEach(async (task,index) => {
+        //         if (task.index >= taskNewIndex && !task._id.equals(newTaskId)) {
+        //             task.index = index +1
+        //         }
+        //        await task.save();
+        //     })
+        // }else{
+        //     tasks.forEach(async (task,index) => {
+        //         if (task.index <= taskNewIndex && task.index > oldIndex  && !task._id.equals(newTaskId)) {
+        //             task.index = task.index  -1
+        //         }
+        //        await task.save();
+        //     })
+        // }
+        const taskToMove = tasks.splice(oldIndex,1)[0]
+        tasks.splice(taskNewIndex,0,taskToMove)
         console.log(tasks)
-        if(order){
-            tasks.forEach(async (task,index) => {
-                if (task.index >= taskNewIndex && !task._id.equals(newTaskId)) {
-                    task.index = index +1
-                }
-               await task.save();
-            })
-        }else{
-            tasks.forEach(async (task,index) => {
-                if (task.index <= taskNewIndex && task.index > oldIndex  && !task._id.equals(newTaskId)) {
-                    task.index = task.index  -1
-                }
-               await task.save();
-            })
-        }
+        let updatedTasks = tasks.map((task,index)=>{
+            return { ...task, index };
+        })
+        const bulkUpDate = updatedTasks.map((task)=>({
+            updateOne: {
+                filter: { _id: task._id },
+                update: { $set: { index: task.index } }
+            }
+        }))
+        await Task.bulkWrite(bulkUpDate)
+
     } catch (error) {
         console.log(error)
     }

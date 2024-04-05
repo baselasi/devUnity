@@ -42,7 +42,7 @@ export default function NewTaskModul(props: any): JSX.Element {
 
     return (
         <MyModal width="w-3/6" isOpen={isModalOpen} onClose={toggleModal} title="Create New Task">
-            <div className=" shadow-md rounded text-black pt-6 pb-8 mb-4" >
+            <div className="  rounded  bg-black pt-6 pb-8 mb-4" >
                 <form className="px-20 border-b pb-3" ref={newTaskForm} >
                     <div className="mb-4 " >
                         <input onChange={handelInput} type="text" name="taskName" className="my-input " id="floatingInput" placeholder="task tilte*" />

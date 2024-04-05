@@ -39,11 +39,12 @@ export default function TaskTabel(): JSX.Element {
     async function onDragEnd(result: any) {
         const columnId: string = result.destination.droppableId
         const payload = { columnId: columnId , index :result.destination.index}
-        const res = await patchTask(payload, result.draggableId)
+        const res =  patchTask(payload, result.draggableId)
         // await getProjects()
-        setResault({task:res.data,dragResault:result})
+        console.log(result)
+        setResault({dragResault:result})
 }
-return (
+return (        
     <>
         <DragDropContext onDragEnd={(result) => onDragEnd(result)} >
             <div className="flex overflow-x-scroll bg-neutral-900 text-neutral-200  ">
