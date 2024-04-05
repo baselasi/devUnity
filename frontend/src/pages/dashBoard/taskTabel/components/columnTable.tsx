@@ -31,7 +31,7 @@ export default function ColumnTabel(props: props): JSX.Element {
         async () => {
             await getTasks(props._id, (tasks: TaskModul[]) => setTasks(tasks.sort((a,b)=>a.index-b.index)))
         })
-
+//reorganize the grid in the frontend 
     useEffect(() => {
         if (props.draggingResault == undefined || tasks == null) {
             return
