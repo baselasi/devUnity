@@ -18,7 +18,7 @@ export default function MyModal(props: modalProps) {
                 <div  tabIndex={-1}  className="overflow-y-auto overflow-x-hidden fixed flex top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div className={ `relative  p-4 ${props.width} ` }>
                         <div className="relative text-white bg-black text-white\ rounded-lg  dark:bg-gray-700 border-2 shadow-md border-white ">
-                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <div className="flex items-center justify-between p-4 md:p-5  rounded-t dark:border-gray-600">
                                 <h3 className="text-xl font-semibold  ">
                                     {props.title}
                                 </h3>

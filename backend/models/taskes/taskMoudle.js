@@ -19,15 +19,15 @@ const taskSchema = new mongoose.Schema({
     index:{
         type:Number,
     },
-    assignee: new mongoose.Schema({
+    assignee: ([{
         userName:{
             type:String
         },
-        id:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        id:{ type: String},
         userSigla:{
             type:String
         }
-    }),
+    }]),
     creator:new mongoose.Schema({
         userName:{
             type:String

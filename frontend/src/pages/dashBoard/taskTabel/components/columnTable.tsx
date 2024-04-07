@@ -81,8 +81,8 @@ export default function ColumnTabel(props: props): JSX.Element {
 
             </Droppable>
 
-
-            <NewTaskModul onDispatch={() => getTasks(props._id, (tasks: TaskModul[]) => setTasks(tasks))} isOpen={isNewTaskModalOpen} columnId={props._id} />
+                {isNewTaskModalOpen ?  <NewTaskModul onDispatch={() => getTasks(props._id, (tasks: TaskModul[]) => setTasks(tasks))} isOpen={isNewTaskModalOpen} columnId={props._id} /> :<></>}
+           
         </>
 
     )

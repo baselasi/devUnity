@@ -2,6 +2,7 @@
 
 const { default: mongoose } = require("mongoose")
 const Task = require("../../models/taskes/taskMoudle")
+const { find } = require("../../models/users")
 
 
 exports.createNewTask = async function (req, res) {
@@ -9,6 +10,7 @@ exports.createNewTask = async function (req, res) {
         if (req.body.index == undefined) {
             const _columnId = new mongoose.Types.ObjectId(req.body.columnId)
             let tasks = await Task.find({ columnId: _columnId })
+            let assigneeId = req.body.assignee
             let index = tasks.length
             req.body.index = index
         }

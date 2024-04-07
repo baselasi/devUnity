@@ -8,9 +8,10 @@ import { UserPublicProfile } from "../utility/user";
 export interface TaskPostModul {
     taskName?: string,
     columnId?: string,
-    assignee?: UserPublicProfile,
+    assignee?:string[],                  //UserPublicProfile,
     creator?: UserPublicProfile,
-    importance?: number
+    importance?: number,
+   
 }
 
 export async function getTasksByColumnId<TaskModul>(columnId: string): Promise<BaseResponse<TaskModul>> {

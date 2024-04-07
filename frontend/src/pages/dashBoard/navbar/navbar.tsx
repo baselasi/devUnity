@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MultiSelect } from "react-multi-select-component";
 
 import ClikableLabel from "../../../components/clickablelabel";
 import { ProjectModul } from "../../../utility/projects";
@@ -68,13 +67,6 @@ export default function Navbar(): JSX.Element {
           </li>
         </ul>
       </div>
-      <MultiSelect
-        options={y}
-        value={x}
-        isCreatable={false}
-        onChange={console.log("w")}
-        labelledBy="Select"
-      />
       <div className="m-4 text-black">
         <div className="relative inline-block text-left">
           <div>
