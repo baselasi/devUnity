@@ -2,7 +2,7 @@
 
 const { default: mongoose } = require("mongoose")
 const Task = require("../../models/taskes/taskMoudle")
-const { find } = require("../../models/users")
+const User = require("../../models/users");
 
 
 exports.createNewTask = async function (req, res) {
@@ -11,8 +11,17 @@ exports.createNewTask = async function (req, res) {
             const _columnId = new mongoose.Types.ObjectId(req.body.columnId)
             let tasks = await Task.find({ columnId: _columnId })
             let assigneeId = req.body.assignee
+            let assigneePromies = assigneeId.map(async(id)=>{
+                let user = await User.findById(id).select("sigla username _id")
+                console .log(id)
+                return user.toObject()
+            })
+            const assignee = await Promise.all(assigneePromies)
+            console.log(assignee)
             let index = tasks.length
             req.body.index = index
+            req.body.assignee = assignee
+            console.log(req.body)
         }
         const data = await Task.create(req.body)
         return res.status(200).json({

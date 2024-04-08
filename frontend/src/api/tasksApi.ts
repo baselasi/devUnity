@@ -4,7 +4,7 @@ import { BaseResponse } from "./_baseApi";
 import { getData, postData, patchData } from "./_baseApi";
 import { TaskModul } from "../modules/taskModul";
 import { UserPublicProfile } from "../utility/user";
-
+import { ListItem } from "../utility/comonInterfaces";
 export interface TaskPostModul {
     taskName?: string,
     columnId?: string,
@@ -50,6 +50,18 @@ export async function patchTask<T>(body: any,taskIdd:string): Promise<BaseRespon
     }catch(err){
         baseResponse.status = 500
         baseResponse.sucess = false
+        return baseResponse
+    }
+}
+
+export async function getLables<T>(projectId:string):Promise<BaseResponse<T>> {
+    const baseResponse = new BaseResponse<ListItem[]>
+    try {
+        const res =await getData<ListItem[]>({apiUrl:`api/labels?projectId=${projectId}`})
+        return res
+    } catch (error) {
+        baseResponse.status = 500
+        baseResponse.sucess=false
         return baseResponse
     }
 }

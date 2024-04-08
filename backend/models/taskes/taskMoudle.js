@@ -20,11 +20,11 @@ const taskSchema = new mongoose.Schema({
         type:Number,
     },
     assignee: ([{
-        userName:{
+        username:{
             type:String
         },
-        id:{ type: String},
-        userSigla:{
+        _id:{ type: String},
+        sigla:{
             type:String
         }
     }]),
@@ -37,9 +37,11 @@ const taskSchema = new mongoose.Schema({
             type:String
         }
     }),
-    labels:{
-        type:[Number]
-    },
+    labels:[{
+        name:{type:String},
+        id:{type:String},
+        colore:{type:Number}
+    }],
     importance:{
         type:Number
     },

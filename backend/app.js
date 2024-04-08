@@ -24,6 +24,7 @@ const userRouter = require("./routes/user")
 const taskRouter = require("./routes/tasksRouters/taskRouter")
 const columnRouter = require("./routes/tasksRouters/columnRouter")
 const projectRouter = require("./routes/projectRoutes/projectRoute")
+const tasksLabelsRouter = require("./routes/tasksRouters/labelsRoute")
 
 const port = 4000
 app.use(cors())
@@ -39,6 +40,7 @@ app.use(checkAuthentication)
 app.use("/api",projectRouter)
 app.use("/api",taskRouter)
 app.use("/api",columnRouter)
+app.use("/api",tasksLabelsRouter)
 
 app.listen(port, () => {
   console.log(`hello  ${port}`)
