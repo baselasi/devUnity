@@ -6,6 +6,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import MyModal from "../../../../components/modalTemplate/Modal";
 
 import { TaskModul } from "../../../../modules/taskModul";
+import { createTaskBorderColor,createLabelsColors } from "../../../../utility/comonFunction";
 
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 
 
 export default function TaskCard({ task, index }: { task: TaskModul, index: number }): JSX.Element {
+    // console.log(createTaskBorderColor(5)[2])
     return (
         <Draggable draggableId={task._id} index={index} shouldRespectForcePress={true}>
             {(provided) => (
@@ -29,19 +31,26 @@ export default function TaskCard({ task, index }: { task: TaskModul, index: numb
                     }}
                     ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}
                 >
-                    <div className="border-white rounded-md border hover:bg-black hover:cursor-pointer p-2 active:shadow-md active:shadow-white "  >
+                    <div className={`border-${createTaskBorderColor(task.importance)}   rounded-md border-2 hover:bg-black hover:cursor-pointer p-2 active:shadow-md active:shadow-white `} >
                         <div className="grid grid-cols-4 mb-3">
-                            <h4 className="col-4">{task.taskName}</h4>
+                            <h4 className="col-span-3">{task.taskName?.toUpperCase()}</h4>
                         </div>
-                        <div>
+                        <div className="mb-5">
 
-                            {task.assignee?.map((user) => {
-                                return <span className="rounded-full p-2 bg-blue-900 mx-1" >
+                            {task.assignee?.map((user,index) => {
+                                return <span key={index} className="rounded-full p-2 font-bold bg-blue-900 hover:mx-1" >
                                     {user.sigla}
                                 </span>
                             })}
                         </div>
+                        <div >
 
+                            {task.labels?.map((label,index) => {
+                                return <span key={index} className={`rounded-full p-2 ${createLabelsColors(label.colore)[0]} font-bold ${createLabelsColors(label.colore)[1]}  hover:mx-1`} >
+                                    {label.name.toUpperCase()}
+                                </span>
+                            })}
+                        </div>
                     </div>
 
                 </div>

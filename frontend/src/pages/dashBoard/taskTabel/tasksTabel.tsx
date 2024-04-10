@@ -46,7 +46,7 @@ export default function TaskTabel(): JSX.Element {
 return (        
     <>
         <DragDropContext onDragEnd={(result) => onDragEnd(result)} >
-            <div className="flex overflow-x-scroll bg-neutral-900 text-neutral-200  ">
+            <div className="flex overflow-x-scroll bg-neutral-950 text-neutral-200  ">
                 {columns?.map((el) => {
                     return <ColumnTabel key={el._id} draggingResault={draggingResault}  {...el} />
                 })}

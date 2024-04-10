@@ -14,6 +14,9 @@ import { UserPublicProfile } from "../../../../utility/user";
 import { ListItem } from "../../../../utility/comonInterfaces";
 import { LabelsModul } from "../../../../modules/taskModul";
 
+//utility
+import { createTaskBorderColor } from "../../../../utility/comonFunction";
+
 
 async function getAllMembers(): Promise<ListItem[]> {
     let res = await getUser("", "")
@@ -91,16 +94,16 @@ export default function NewTaskModul(props: any): JSX.Element {
     }
 
     function handellabelInput(e: ListItem[]) {
-        // console.log(e)
-        // const labelsId = e.map((item) => {
-        //     return item.value
-        // })
-        // setTaskForm((prev) => {
-        //     return {
-        //         ...prev,
-        //         labels: labelsId
-        //     }
-        // })
+        console.log(e)
+        const labelsId = e.map((item) => {
+            return item.value
+        })
+        setTaskForm((prev) => {
+            return {
+                ...prev,
+                labels: labelsId
+            }
+        })
     }
 
     return (
@@ -112,9 +115,9 @@ export default function NewTaskModul(props: any): JSX.Element {
                     </div>
                     <div className="relative mb-4 ">
                         {/* <label htmlFor="exampleInputPassword1" className="text-blue-500">Password</label> */}
-                        <input onChange={handelInput} type="number" name="impoartance" className="my-input" placeholder="task importance" />
+                        <input onChange={handelInput} type="number" name="importance" className="my-input" placeholder="task importance" />
                     </div>
-                    <div className="mb-4 " >
+                    <div className="mb-4" >
                         <textarea onChange={handelInput} name="description" className="my-text-area " placeholder="description" />
                     </div>
                     <div className="mb-4 ">

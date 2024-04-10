@@ -12,7 +12,7 @@ export interface TaskModul{
 
 export interface LabelsModul{
     projectId:string,
-    colore:string,
+    colore:number,
     name:string,
     _id:string
 }

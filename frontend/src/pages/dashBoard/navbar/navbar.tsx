@@ -48,7 +48,7 @@ export default function Navbar(): JSX.Element {
     value:"w"
   }]
   return (
-    <nav className=" bg-neutral-500 text-white flex justify-between items-center" style={{ height: "7vh" }}>
+    <nav className=" bg-neutral-500 text-white flex justify-between items-center h-12" >
       <div className="flex justify-items-start items-center">
         <a> <img src="./imgs/android-icon-48x48.png" className="h-100" /></a>
         <ul>

@@ -3,7 +3,7 @@
 const { default: mongoose } = require("mongoose")
 const Task = require("../../models/taskes/taskMoudle")
 const User = require("../../models/users");
-
+const Lable = require("../../models/taskes/tasksLabels")
 
 exports.createNewTask = async function (req, res) {
     try {
@@ -17,10 +17,17 @@ exports.createNewTask = async function (req, res) {
                 return user.toObject()
             })
             const assignee = await Promise.all(assigneePromies)
+            let labelsId = req.body.labels
+            let labelsPromies = labelsId.map(async(id)=>{
+                let label = await Lable.findById(id).select("name colore ")
+                return label.toObject()
+            })
+            const labels = await Promise.all(labelsPromies)
             console.log(assignee)
             let index = tasks.length
             req.body.index = index
             req.body.assignee = assignee
+            req.body.labels = labels
             console.log(req.body)
         }
         const data = await Task.create(req.body)

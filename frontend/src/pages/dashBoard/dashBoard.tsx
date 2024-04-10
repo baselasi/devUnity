@@ -24,8 +24,10 @@ export default function Dashboard(): JSX.Element {
     return (
         <>
             <QueryClientProvider client={queryClient}>
-                <Navbar />
-                <TaskTabel />
+                <div className="h-lvh">
+                    <Navbar />
+                    <TaskTabel />
+                </div>
             </QueryClientProvider>
         </>
     )
