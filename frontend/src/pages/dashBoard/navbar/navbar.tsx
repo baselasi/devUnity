@@ -50,10 +50,10 @@ export default function Navbar(): JSX.Element {
   return (
     <nav className=" bg-neutral-500 text-white flex justify-between items-center h-12" >
       <div className="flex justify-items-start items-center">
-        <a> <img src="./imgs/android-icon-48x48.png" className="h-100" /></a>
+        <a className="mx-4"> <img src="./imgs/android-icon-48x48.png" className="h-100" /></a>
         <ul>
           <li>
-            <a className="" href="#">TASKS</a>
+            <a className="font-bold italic" href="#">TASKS</a>
           </li>
           <li>
             <a>

@@ -63,7 +63,7 @@ export default function ColumnTabel(props: props): JSX.Element {
             <Droppable droppableId={props._id} >
                 {(provided) => (
                     <div className="flex h-lvh flex-col items-center " ref={provided.innerRef} {...provided.droppableProps}>
-                        <div className="flex justify-between w-3/6 m-5">
+                        <div className="flex justify-between w-10/12 my-5 ">
                             <h2 className="font-bold">{props.columnName.toUpperCase()}</h2>
                             <FontAwesomeIcon className="p-1 hover:cursor-pointer" onClick={toggleModal} icon={faPlus} />
                         </div>

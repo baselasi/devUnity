@@ -46,3 +46,7 @@ export function createLabelsColors(value:number):string[]{
     }
 }
 
+export function createUserLabelColor(value:number):string[]{
+    return ["",""]
+}
+

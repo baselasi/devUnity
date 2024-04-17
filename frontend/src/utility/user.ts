@@ -15,7 +15,8 @@ export interface UserLogin{
 }
 
 export interface UserPublicProfile{
-    userName:string,
+    username:string,
     _id:string,
-    sigla:string
+    sigla:string,
+    color:number
 }
