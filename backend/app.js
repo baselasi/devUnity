@@ -12,7 +12,7 @@ app.use((morgan("dev")))
 app.use(bodyParse.json())
 app.use(cookiesParser())
 //connect to database
-mongoose.connect("mongodb+srv://bassel:basseltestapp@test.nhj585q.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://bassel:JSvcmRpCjSAm56IZ@test.nhj585q.mongodb.net/")
 .then(()=>console.log("sucess to connect to mongodb"))
 .catch((err)=>console.log(err))
 
